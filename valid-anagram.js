@@ -3,6 +3,12 @@ const stringB = 'silentn';
 
 // #1 split(), sort(), join()
 
+/**
+ * @author Charles
+ * @param {string} strA
+ * @param {string} strB
+ * @return {boolean}
+ */
 function isAnagramA(strA, strB) {
   if (strA.length !== strB.length) {
     return false;
@@ -17,6 +23,12 @@ console.log(
 
 // # hashMap
 
+/**
+ * @author Charles
+ * @param {string} strA
+ * @param {string} strB
+ * @return {boolean}
+ */
 function isAnagramB(strA, strB) {
   if (strA.length !== strB.length) {
     return false;

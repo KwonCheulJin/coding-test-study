@@ -18,6 +18,12 @@ console.log(
 // caching / frequency map
 const numsArr3 = [1, 2, 3, 4, 6, 6, 7, 2, 2, 8, 9];
 
+/**
+ * @description
+ * @author Charles
+ * @param {number[]} arr
+ * @return {number[]}
+ */
 function uniqueNums(arr) {
   const uniqueElements = {};
   const result = [];
