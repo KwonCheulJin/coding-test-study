@@ -1,3 +1,4 @@
+// @ts-nocheck
 //             day1 day2 day3 ...
 const test1 = [100, 200, 50, 30, 150, 250];
 const test2 = [150, 80, 60, 50, 30];
