@@ -68,3 +68,6 @@ function solution(orders) {
 
 ### 참고
 - [테스트](https://velog.io/@jooyo/%ED%85%8C%EC%8A%A4%ED%8A%B8)
+
+### 문제 출처 - 문제가 검색되지 않음
+[프로그래머스](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&statuses=unsolved&levels=1&languages=javascript)
