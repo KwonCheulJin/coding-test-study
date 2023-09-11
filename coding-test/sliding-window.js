@@ -12,6 +12,10 @@ function maxSumOfSubArray(arr, k) {
     windowSum += arr[i];
     if (i >= k - 1) {
       maxSum = Math.max(windowSum, maxSum);
+      console.log(
+        '🚀 ~ file: sliding-window.js:16 ~ maxSumOfSubArray ~ arr[i - (k - 1)]:',
+        arr[i - (k - 1)]
+      );
       windowSum -= arr[i - (k - 1)];
     }
   }

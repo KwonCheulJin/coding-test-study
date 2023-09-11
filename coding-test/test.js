@@ -34,10 +34,11 @@ function solution(orders) {
   let arr = [],
     user = {};
 
-  orders.map(order => {
-    const arr = order.split(' ');
-    if (user[arr[0]] == undefined) user[arr[0]] = [...arr];
-    else user[arr[0]] = [...user[arr[0]], ...arr];
+  orders.forEach(order => {
+    const temp = order.split(' ');
+    user[temp[0]] == undefined
+      ? (user[temp[0]] = [...temp])
+      : (user[temp[0]] = [...user[temp[0]], ...temp]);
   });
 
   for (let key in user) {
@@ -46,19 +47,27 @@ function solution(orders) {
   }
 
   let max = Math.max.apply(
-    Math,
-    arr.map(el => {
-      return el.length;
-    })
+    null,
+    arr.map(el => el.length)
   );
-  let answer = arr
+
+  return arr
     .filter(_ => _.length === max)
     .reduce((acc, _) => {
       acc.push(_[0]);
       return acc;
     }, []);
-  return answer;
 }
+console.log(
+  solution([
+    'alex pizza pasta',
+    'alex pizza pizza',
+    'alex noodle',
+    'bob pasta',
+    'bob noodle sandwich pasta',
+    'bob steak noodle',
+  ])
+);
 
 // 예산에 맞는 물건 구매
 // 문제설명
@@ -75,18 +84,18 @@ function solution(orders) {
 // b는 1 이상 10,000 이하의 자연수입니다.
 // budget은 1 이상 1,000,000 이하의 자연수입니다.
 
-function solution(a, b, budget) {
-  // 3000 , 5000, 23000
-  let answer = 0;
+// function solution(a, b, budget) {
+//   // 3000 , 5000, 23000
+//   let answer = 0;
 
-  for (let i = 0; i * a < budget; i++) {
-    for (let j = 0; j * b < budget; j++) {
-      if (budget - (i * a + j * b) === 0) answer++;
-    }
-  }
+//   for (let i = 0; i * a < budget; i++) {
+//     for (let j = 0; j * b < budget; j++) {
+//       if (budget - (i * a + j * b) === 0) answer++;
+//     }
+//   }
 
-  return answer;
-}
+//   return answer;
+// }
 
 // 문제
 // 유지비는 매달 k일에 청구됩니다. 그 날이 주말(토요일 & 일요일)이라면, 유지비는 제일 가까운 주말에 청구됩니다. 1월(매 연도의 첫 달)의 첫째 주 첫 날의 요일이 day로 주어지며, k는 매달 유지비를 지불해야 하는 날짜일 때 이러한 파라미터를 받아 1월부터 12월까지 k가 주말이면 0, 아니라면 1을 반환하는 배열을 반환하는 solution 함수를 작성하세요.
@@ -121,29 +130,29 @@ function solution(a, b, budget) {
 // 예제 #2
 // 첫 번째 day는 일요일(6)이며, 유지비는 매월 25일(k)에 청구되어야 합니다. 1월의 25일이 주말이 아니므로, result의 첫 번째 요소의 값은 0입니다. 1월부터 12월까지 매 달의 25일은 수, 토, 토, 화, 목, 일, 화, 금, 월, 수, 토, 일입니다. 따라서 반환 배열은 [0,1,1,0,0,1,0,0,0,0,1,0] 입니다.
 
-function solution(day, k) {
-  let answer = [];
+// function solution(day, k) {
+//   let answer = [];
 
-  const MONTHS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+//   const MONTHS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-  // month 증가시 일수 누적
-  let sumOfDay = 0;
+//   // month 증가시 일수 누적
+//   let sumOfDay = 0;
 
-  // 1월부터 12월까지 순회
-  for (let i = 0, len = MONTHS.length; i < len; i++) {
-    // 1월인 경우(else) day + k 더한 값에 1 빼기 -> 나머지를 통해 요일을 구하기 위함
-    // 예: day = 6(일요일), k = 1인 경우 6 + 1 - 1 = 6
-    // 예: day = 6(일요일), k = 1인 경우 6 + 25 - 1 = 30
-    if (i != 0) sumOfDay += MONTHS[i - 1];
-    else sumOfDay = day + k - 1;
+//   // 1월부터 12월까지 순회
+//   for (let i = 0, len = MONTHS.length; i < len; i++) {
+//     // 1월인 경우(else) day + k 더한 값에 1 빼기 -> 나머지를 통해 요일을 구하기 위함
+//     // 예: day = 6(일요일), k = 1인 경우 6 + 1 - 1 = 6
+//     // 예: day = 6(일요일), k = 1인 경우 6 + 25 - 1 = 30
+//     if (i != 0) sumOfDay += MONTHS[i - 1];
+//     else sumOfDay = day + k - 1;
 
-    // 누적 일수를 7로 나눈 나머지가 해당 달 지급일의 요일
-    let currentDay = sumOfDay % 7;
+//     // 누적 일수를 7로 나눈 나머지가 해당 달 지급일의 요일
+//     let currentDay = sumOfDay % 7;
 
-    // 토, 일이면 1 push, 아니면 0 push
-    if (currentDay == 5 || currentDay == 6) answer.push(1);
-    else answer.push(0);
-  }
+//     // 토, 일이면 1 push, 아니면 0 push
+//     if (currentDay == 5 || currentDay == 6) answer.push(1);
+//     else answer.push(0);
+//   }
 
-  return answer;
-}
+//   return answer;
+// }
